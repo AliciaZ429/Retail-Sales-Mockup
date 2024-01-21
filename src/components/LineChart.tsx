@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3"; // import d3 library for data visualization
+import { SalesData, RetailSalesProps } from "../type";
 
-const LineChart = ({ salesData }) => {
-  const chartRef = useRef(null);
+const LineChart: React.FC<RetailSalesProps> = ({ salesData }) => {
+  const chartRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
     drawChart();
@@ -34,17 +35,17 @@ const LineChart = ({ salesData }) => {
         0,
         d3.max(salesData, (sale) =>
           Math.max(sale.retailSales, sale.wholesaleSales)
-        ),
+        ) as number,
       ])
       .range([height, 0]);
 
     const lineRetail = d3
-      .line()
+      .line<SalesData>()
       .x((d) => x(d.weekEnding) + x.bandwidth() / 2)
       .y((d) => y(d.retailSales));
 
     const lineWholesale = d3
-      .line()
+      .line<SalesData>()
       .x((d) => x(d.weekEnding) + x.bandwidth() / 2)
       .y((d) => y(d.wholesaleSales));
 

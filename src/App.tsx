@@ -3,11 +3,11 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import ProductPage from "./components/ProductPage";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Provider store={store}>
       <ProductPage />
     </Provider>
   );
-}
+};
 export default App;

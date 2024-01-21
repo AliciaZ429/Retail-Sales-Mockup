@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import * as d3 from "d3";
+import { SalesData, RetailSalesProps } from "../type";
 
-const RetailSalesTable = ({ salesData }) => {
-  const tableRef = useRef(null);
+const RetailSalesTable: React.FC<RetailSalesProps> = ({ salesData }) => {
+  const tableRef = useRef<HTMLTableElement | null>(null);
 
   useEffect(() => {
     drawTable();

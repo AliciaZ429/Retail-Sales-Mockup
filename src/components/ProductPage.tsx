@@ -1,29 +1,32 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchProductData } from "../redux/productSlice";
 import LineChart from "./LineChart";
 import RetailSalesTable from "./RetailSalesTable";
 import "./ProductPage.css";
+import { RootState } from "../type";
+import { useAppDispatch } from "../redux/store";
 
-const ProductPage = () => {
-  const dispatch = useDispatch();
+const ProductPage: React.FC = () => {
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    console.log("Dispatching fetchProductData");
     dispatch(fetchProductData());
   }, [dispatch]);
 
-  const { productData, loading, error } = useSelector((state) => state.product);
+  const { productData, loading, error } = useSelector(
+    (state: RootState) => state.product
+  );
 
   if (loading) {
-    return "loading...";
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return error;
+    return <div>{error}</div>;
   }
 
-  console.log("this is productdata", productData);
+  if (!productData) return null;
 
   const { image, brand, title, tags } = productData[0];
 

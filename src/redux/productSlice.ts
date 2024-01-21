@@ -1,22 +1,24 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Review, SalesData, ProductData, ProductState } from "../type.ts";
 
 // Create an asynchronous thunk for fetching data
-export const fetchProductData = createAsyncThunk(
-  "product/fetchProductData",
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await axios.get("/assets/data.json");
-      const data = response.data;
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
+export const fetchProductData = createAsyncThunk<
+  ProductData,
+  void,
+  { rejectValue: string }
+>("product/fetchProductData", async (_, { rejectWithValue }) => {
+  try {
+    const response = await axios.get("/assets/data.json");
+    const data = response.data as ProductData;
+    return data;
+  } catch (error) {
+    return rejectWithValue(error.message);
   }
-);
+});
 
 // Define initial state
-const initialState = {
+const initialState: ProductState = {
   productData: null,
   loading: false,
   error: null,
