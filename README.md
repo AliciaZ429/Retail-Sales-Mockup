@@ -2,7 +2,7 @@
 
 # Introduction
 
-This is a data visualization mockup of retail sales data of 207. It has a retail line chart and a seasonal percentage pie chart. In addition, a fact table.
+This is a data visualization mockup of retail sales data of 2017. It has a retail line chart and a seasonal percentage pie chart. In addition, a fact table.
 
 # Known Issue
 
