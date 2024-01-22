@@ -6,9 +6,9 @@ This is a data visualization mockup of retail sales data of 2017. It has a retai
 
 # Known Issue
 
-Tried migrating to TS in dev branch, TS failed to launch very likely because of ts-node compatability. Chose to touch up visualization due to time limit. Check out dev it needed.
+Tried migrating to TS in dev branch, TS failed to launch very likely because of ts-node compatibility. Chose to touch up visualization due to time limit. Check out dev it needed.
 
-# Devolper Change Log
+# Developer Change Log
 
 01/18
 
